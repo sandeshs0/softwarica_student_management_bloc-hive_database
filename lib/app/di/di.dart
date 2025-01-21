@@ -16,9 +16,7 @@ import 'package:softwarica_student_management_bloc/features/batch/domain/use_cas
 import 'package:softwarica_student_management_bloc/features/batch/domain/use_case/get_all_batch_usecase.dart';
 import 'package:softwarica_student_management_bloc/features/batch/presentation/view_model/batch_bloc.dart';
 import 'package:softwarica_student_management_bloc/features/course/data/data_source/course_local_data_source.dart';
-import 'package:softwarica_student_management_bloc/features/course/data/data_source/course_remote_data_source.dart';
 import 'package:softwarica_student_management_bloc/features/course/data/repository/course_local_repository.dart';
-import 'package:softwarica_student_management_bloc/features/course/data/repository/course_remote_repository.dart';
 import 'package:softwarica_student_management_bloc/features/course/domain/use_case/create_course_usecase.dart';
 import 'package:softwarica_student_management_bloc/features/course/domain/use_case/delete_course_usecase.dart';
 import 'package:softwarica_student_management_bloc/features/course/domain/use_case/get_all_course_usecase.dart';
@@ -83,8 +81,8 @@ _initCourseDependencies() {
       () => CourseLocalDataSource(hiveService: getIt<HiveService>()));
 
   // Remote Data Source
-  getIt.registerFactory<CourseRemoteDataSource>(
-      () => CourseRemoteDataSource(dio: getIt<Dio>()));
+  // getIt.registerFactory<CourseRemoteDataSource>(
+  //     () => CourseRemoteDataSource(dio: getIt<Dio>()));
 
   // Local Repository
   getIt.registerLazySingleton<CourseLocalRepository>(() =>
@@ -92,9 +90,9 @@ _initCourseDependencies() {
           courseLocalDataSource: getIt<CourseLocalDataSource>()));
 
   // Remote Repository
-  getIt.registerLazySingleton<CourseRemoteRepository>(() =>
-      CourseRemoteRepository(
-          remoteDatasource: getIt<CourseRemoteDataSource>()));
+  // getIt.registerLazySingleton<CourseRemoteRepository>(() =>
+  //     CourseRemoteRepository(
+  //         remoteDatasource: getIt<CourseRemoteDataSource>()));
 
   // Usecases
   getIt.registerLazySingleton<CreateCourseUsecase>(
